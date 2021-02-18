@@ -1,4 +1,9 @@
 const puppeteer = require('puppeteer');
+
+const {
+  CHROMIUM_DATA_DIR,CHROMIUM_BIN
+} = process.env
+
 let chromiumArgs = [
   '--no-sandbox',
   '--disable-gpu',
@@ -11,7 +16,10 @@ let chromiumArgs = [
 const Crawler = class {
   constructor() {
     puppeteer.launch({
-        args: chromiumArgs
+        ignoreHTTPSErrors: true,
+        acceptInsecureCerts: true,
+        args: chromiumArgs,
+        executablePath: CHROMIUM_BIN,
       })
       .then((_browser) => {
         this.browser = _browser;
