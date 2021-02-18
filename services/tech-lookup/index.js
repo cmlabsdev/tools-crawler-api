@@ -1,4 +1,4 @@
-const Wappalyzer = require('./driver');
+const Wappalyzer = require('../functions/driver');
 
 const Analyzer = class {
   constructor() {
@@ -11,7 +11,9 @@ const Analyzer = class {
   
   async analyze(url) {
     let site = await this.wappalyzer.open(url);
-    return site.analyze();
+    const result = site.analyze();
+    site.destroy();
+    return result;
   }
 }
 
