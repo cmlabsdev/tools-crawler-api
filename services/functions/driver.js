@@ -45,7 +45,7 @@ if (AWS_LAMBDA_FUNCTION_NAME) {
 const extensions = /^([^.]+$|\.(asp|aspx|cgi|htm|html|jsp|php)$)/
 
 const { technologies, categories } = JSON.parse(
-  fs.readFileSync(path.resolve(`${__dirname}/technologies.json`))
+  fs.readFileSync(path.resolve(`${path.resolve('resource/technologies.json')}`))
 )
 
 setTechnologies(technologies)
