@@ -14,10 +14,19 @@ router.get('/scrape', async (req, res) => {
     })
   }
   
-  res.send({
-    statusCode: 200,
-    html: await HtmlScraper.request(url)
-  });
+  try {
+    const html = await HtmlScraper.request(url)
+  
+    res.send({
+      statusCode: 200,
+      html: html
+    });
+  } catch (e){
+    res.send({
+      statusCode: 500,
+      message: e.message
+    })
+  }
 });
 
 module.exports = router;
