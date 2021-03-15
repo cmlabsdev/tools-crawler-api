@@ -4,9 +4,9 @@ const crypto = require('crypto')
 const SitemapGenerator = class {
   init(server) {
     const io = require('socket.io')(server, {
-      origins: '*:*'
+      origins: process.env.TOOL_URL || 'http://tools.test'
     });
-    
+
     io.on('connection', (socket) => {
       console.log('connected cok')
       let filenames = []
