@@ -2,7 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-require('express-async-errors')
+require('express-async-errors');
 
 const mainRouter = require('./routes/index');
 

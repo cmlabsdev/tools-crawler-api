@@ -3,6 +3,7 @@ const router = express.Router();
 
 const technologyLookupRouter = require('./technology-lookup');
 const scrapeHtmlRouter = require('./scrape-html');
+const sitemapGeneratorRouter = require('./sitemap-generator')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -11,5 +12,6 @@ router.get('/', function (req, res, next) {
 
 router.use('/api', technologyLookupRouter);
 router.use('/api', scrapeHtmlRouter);
+router.use('/api', sitemapGeneratorRouter)
 
 module.exports = router;
