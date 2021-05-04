@@ -19,9 +19,12 @@ const SitemapGenerator = class {
         if (url.match(check)) {
           let hashing = crypto.createHash('md5').update(url + new Date().getTime() + crypto.randomBytes(9999)).digest('hex')
           const generator = crawler(url, {
+            scanSubdomains: false,
             stripQuerystring: false,
             ignoreHreflang: true,
-            filepath: `${process.cwd()}/storage/sitemap/${hashing}/sitemap.xml`
+            filepath: `${process.cwd()}/storage/sitemap/${hashing}/sitemap.xml`,
+            maxDepth: 5,
+            maxConcurrency: 3
           })
           
           connectedGenerator[socket.id] = generator
